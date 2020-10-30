@@ -9,6 +9,8 @@ Using http://pseapi.com/api.
 
 **Limitation of API** the API does not provide the list of the company. Thus, the company were manually put to the program as json file. Located at Assets/jsons/ directory.
 
+**TODOs**
+  [] - Add chart for particular company in detail page
 
 ![20201030_233102](https://user-images.githubusercontent.com/25916444/97725119-c0025a00-1b08-11eb-895d-0f6ed0cfe2bb.gif)
 
