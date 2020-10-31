@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:stock_monitoring_app/stock.dart';
+import 'package:stock_monitoring_app/stock_chart.dart';
 
 import 'company.dart';
 import 'constants.dart';
@@ -54,6 +55,11 @@ class _StockDetailPageState extends State<StockDetailPage> {
                               "Records from ${stocks[0].date} to ${stocks[stocks.length - 1].date}"),
                         ),
                         Expanded(
+                          child: StockChart(
+                            stocks: stocks,
+                          ),
+                        ),
+                        Expanded(
                           child: ListView.builder(
                               itemCount: stocks.length,
                               itemBuilder: (context, index) {
@@ -67,7 +73,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                         children: [
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 children: [
@@ -97,7 +103,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                           ),
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 children: [
@@ -114,7 +120,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    "high: ",
+                                                    "High: ",
                                                     style: TextStyle(
                                                         color: Colors.green),
                                                   ),
