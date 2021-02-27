@@ -32,14 +32,14 @@ class _StockChartState extends State<StockChart> {
       child: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(18)),
-          gradient: LinearGradient(
-            colors: [
-              Color(0xff2c274c),
-              Color(0xff46426c),
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          ),
+          // gradient: LinearGradient(
+            // colors: [
+            //   // Color(0xff2c274c),
+            //   // Color(0xff46426c),
+            // ],
+            // begin: Alignment.bottomCenter,
+            // end: Alignment.topCenter,
+          // ),
         ),
         child: Stack(
           children: <Widget>[
@@ -184,14 +184,14 @@ class _StockChartState extends State<StockChart> {
 
     // horizontal axis
     int position = 0;
+    print(widget.stocks.length);
     for (int i = 0; i < widget.stocks.length; i++) {
+      print("i = $i");
       if (i == 0) {
         spotStocks.add(_SpotStock(i.toDouble(), widget.stocks[i]));
       } else {
-        DateTime previousDate =
-            DateTime.tryParse(convertedDateString(widget.stocks[i - 1].date));
-        DateTime currentDate =
-            DateTime.tryParse(convertedDateString(widget.stocks[i].date));
+        DateTime previousDate = DateTime.tryParse(widget.stocks[i - 1].date);
+        DateTime currentDate = DateTime.tryParse(widget.stocks[i].date);
         // handles no trading days
         int difference = currentDate.difference(previousDate).inDays;
         position += difference;

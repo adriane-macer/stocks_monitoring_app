@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stock_monitoring_app/model/stock_model.dart';
+import 'package:provider/provider.dart';
 
 import 'home_page.dart';
 
@@ -9,13 +11,18 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<StockModel>(create: (_) => StockModel()),
+      ],
+      child: MaterialApp(
+        title: 'PSE Stock Monitoring',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: HomePage(),
       ),
-      home: HomePage(),
     );
   }
 }

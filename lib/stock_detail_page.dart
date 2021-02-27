@@ -2,8 +2,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:stock_monitoring_app/model/stock_model.dart';
 import 'package:stock_monitoring_app/stock.dart';
 import 'package:stock_monitoring_app/stock_chart.dart';
+import 'package:provider/provider.dart';
 
 import 'company.dart';
 import 'constants.dart';
@@ -39,8 +41,10 @@ class _StockDetailPageState extends State<StockDetailPage> {
               style: Theme.of(context).textTheme.headline4,
             ),
           ),
-          FutureBuilder(
-            future: getStocks(),
+          StreamBuilder(
+            stream: context
+                .read<StockModel>()
+                .getCompanyStocks(widget.company.symbol),
             builder:
                 (BuildContext context, AsyncSnapshot<List<Stock>> snapshot) {
               if (snapshot.hasData) {
@@ -73,7 +77,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                         children: [
                                           Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 children: [
@@ -103,7 +107,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                           ),
                                           Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 children: [

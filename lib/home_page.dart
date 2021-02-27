@@ -1,9 +1,8 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
-import 'package:stock_monitoring_app/constants.dart';
+import 'package:stock_monitoring_app/model/stock_model.dart';
 import 'package:stock_monitoring_app/stock_detail_page.dart';
+import 'package:provider/provider.dart';
 
 import 'company.dart';
 
@@ -20,8 +19,8 @@ class _HomePageState extends State<HomePage> {
         title: Text("Stock Monitoring"),
         centerTitle: true,
       ),
-      body: FutureBuilder(
-        future: getCompanies(),
+      body: StreamBuilder(
+        stream: context.read<StockModel>().getCompanies(),
 //        initialData: <Stock>[],
         builder: (BuildContext context, AsyncSnapshot<List<Company>> snapshot) {
           if (snapshot.hasData) {
@@ -65,27 +64,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<List<Company>> getCompanies() async {
-    // Because the API does not provide the list of the companies,
-    // they were listed manually.
-    final jsonString = await rootBundle.loadString(Constants.COMPANY_JSON_FILE);
-    final jsonResponse = jsonDecode(jsonString);
-
-    dynamic companies;
-    try {
-      companies = jsonResponse
-          .map((data) => Company.fromJson(data as Map<String, dynamic>))
-          .toList();
-    } catch (e) {
-      debugPrint(e);
-      throw Exception("HomePage.getCompanies() exception: $e");
-    }
-    final List<Company> companyList = [];
-    companies.forEach((company) {
-      companyList.add(Company(
-          symbol: company.symbol.toString(),
-          companyName: company.companyName.toString()));
-    });
-    return companyList;
-  }
+  // Future<List<Company>> getCompanies() async {
+  //   // Because the API does not provide the list of the companies,
+  //   // they were listed manually.
+  //   final jsonString = await rootBundle.loadString(Constants.COMPANY_JSON_FILE);
+  //   final jsonResponse = jsonDecode(jsonString);
+  //
+  //   dynamic companies;
+  //   try {
+  //     companies = jsonResponse
+  //         .map((data) => Company.fromJson(data as Map<String, dynamic>))
+  //         .toList();
+  //   } catch (e) {
+  //     debugPrint(e);
+  //     throw Exception("HomePage.getCompanies() exception: $e");
+  //   }
+  //   final List<Company> companyList = [];
+  //   companies.forEach((company) {
+  //     companyList.add(Company(
+  //         symbol: company.symbol.toString(),
+  //         companyName: company.companyName.toString()));
+  //   });
+  //   return companyList;
+  // }
 }
