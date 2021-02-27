@@ -63,11 +63,16 @@ class _StockDetailPageState extends State<StockDetailPage> {
                           ),
                         ),
                         Expanded(
-                          child: ChartView(
-                            stocks: stocks,
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 32),
+                            child: ChartView(
+                              stocks: stocks,
+                            ),
                           ),
                         ),
-                        SizedBox(height: 12.0,),
+                        SizedBox(
+                          height: 12.0,
+                        ),
                         Expanded(
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 32),

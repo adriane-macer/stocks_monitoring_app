@@ -12,13 +12,10 @@ class CandlestickChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 36.0),
-      child: OHLCVGraph(
-        data: _stockData(),
-        enableGridLines: false,
-        volumeProp: 0.2,
-      ),
+    return OHLCVGraph(
+      data: _stockData(),
+      enableGridLines: false,
+      volumeProp: 0.2,
     );
   }
 
