@@ -184,7 +184,6 @@ class _StockChartState extends State<StockChart> {
 
     // horizontal axis
     int position = 0;
-    print(widget.stocks.length);
     for (int i = 0; i < widget.stocks.length; i++) {
       if (i == 0) {
         spotStocks.add(_SpotStock(i.toDouble(), widget.stocks[i]));
@@ -198,13 +197,6 @@ class _StockChartState extends State<StockChart> {
       }
     }
     maxX = position.toDouble();
-  }
-
-  String convertedDateString(String dateFromApiFormat) {
-    // The date format from api is MM/DD/YYYY
-    // The nearest format that the DateTime is YYYYMMDD
-    List<String> splitDate = dateFromApiFormat.toString().split("/");
-    return "${splitDate.last}${splitDate.first.toString().padLeft(2, "0")}${splitDate[1].toString().padLeft(2, "0")}";
   }
 }
 
