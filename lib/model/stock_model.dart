@@ -10,7 +10,7 @@ import '../company.dart';
 class StockModel extends ChangeNotifier {
   bool isCandleStickChart = false;
 
-  void toggleChart(){
+  void toggleChart() {
     isCandleStickChart = !isCandleStickChart;
     notifyListeners();
   }
@@ -24,6 +24,7 @@ class StockModel extends ChangeNotifier {
       if (response.statusCode == 200) {
         yield (json.decode(response.body)["stocks"] as List)
             .map((data) => Company.fromJson(data))
+            .where((Company company) => company.status == "OPEN")
             .toList();
       }
     } catch (e) {
@@ -56,7 +57,7 @@ class StockModel extends ChangeNotifier {
     try {
       final http.Response response = await http.get(
           "${AppConstants.BASE_URL}${AppConstants.STOCKS_PATH}/$symbol/history/$firstDate/$recentDate");
-      if (response.statusCode == 200 ) {
+      if (response.statusCode == 200) {
         yield (json.decode(response.body)["history"] as List)
             .map((data) => Stock.fromJson(data))
             .toList();
@@ -66,5 +67,4 @@ class StockModel extends ChangeNotifier {
       throw Exception("StockModel.getCompanyStocks() exception: $e");
     }
   }
-
 }
