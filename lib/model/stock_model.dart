@@ -8,7 +8,12 @@ import 'dart:convert';
 import '../company.dart';
 
 class StockModel extends ChangeNotifier {
-  List<Stock> stocks = [];
+  bool isCandleStickChart = false;
+
+  void toggleChart(){
+    isCandleStickChart = !isCandleStickChart;
+    notifyListeners();
+  }
 
   Stream<List<Company>> getCompanies() async* {
     yield [];
@@ -61,4 +66,5 @@ class StockModel extends ChangeNotifier {
       throw Exception("StockModel.getCompanyStocks() exception: $e");
     }
   }
+
 }

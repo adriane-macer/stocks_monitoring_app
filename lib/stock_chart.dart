@@ -28,18 +28,18 @@ class _StockChartState extends State<StockChart> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.23,
+      aspectRatio: 1.50,
       child: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(18)),
-          // gradient: LinearGradient(
-            // colors: [
-            //   // Color(0xff2c274c),
-            //   // Color(0xff46426c),
-            // ],
-            // begin: Alignment.bottomCenter,
-            // end: Alignment.topCenter,
-          // ),
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff2c274c),
+              Color(0xff46426c),
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
         ),
         child: Stack(
           children: <Widget>[
@@ -186,7 +186,6 @@ class _StockChartState extends State<StockChart> {
     int position = 0;
     print(widget.stocks.length);
     for (int i = 0; i < widget.stocks.length; i++) {
-      print("i = $i");
       if (i == 0) {
         spotStocks.add(_SpotStock(i.toDouble(), widget.stocks[i]));
       } else {

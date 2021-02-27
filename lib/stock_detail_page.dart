@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:stock_monitoring_app/chart_view.dart';
 import 'package:stock_monitoring_app/model/stock_model.dart';
 import 'package:stock_monitoring_app/stock.dart';
 import 'package:stock_monitoring_app/stock_chart.dart';
@@ -62,10 +63,11 @@ class _StockDetailPageState extends State<StockDetailPage> {
                           ),
                         ),
                         Expanded(
-                          child: StockChart(
+                          child: ChartView(
                             stocks: stocks,
                           ),
                         ),
+                        SizedBox(height: 12.0,),
                         Expanded(
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 32),
