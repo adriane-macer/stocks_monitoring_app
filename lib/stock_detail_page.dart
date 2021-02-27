@@ -34,11 +34,12 @@ class _StockDetailPageState extends State<StockDetailPage> {
           SizedBox(
             width: double.infinity,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          Container(
+            margin: const EdgeInsets.all(8.0),
             child: Text(
               "${widget.company.companyName}",
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
+              textAlign: TextAlign.center,
             ),
           ),
           StreamBuilder(
@@ -56,7 +57,9 @@ class _StockDetailPageState extends State<StockDetailPage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                              "Records from ${stocks[0].date} to ${stocks[stocks.length - 1].date}"),
+                            "Records from ${stocks[0].date} to ${stocks[stocks.length - 1].date}",
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
                         ),
                         Expanded(
                           child: StockChart(
@@ -64,83 +67,88 @@ class _StockDetailPageState extends State<StockDetailPage> {
                           ),
                         ),
                         Expanded(
-                          child: ListView.builder(
-                              itemCount: stocks.length,
-                              itemBuilder: (context, index) {
-                                return Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      title: Text(
-                                          "${stocks[index].date.toString()}"),
-                                      subtitle: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "Open: ",
-                                                    style: TextStyle(
-                                                        color: Colors.blue),
-                                                  ),
-                                                  Text(
-                                                    "${stocks[index].open}",
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "Low: ",
-                                                    style: TextStyle(
-                                                        color: Colors.red),
-                                                  ),
-                                                  Text(
-                                                    "${stocks[index].low}",
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "Close: ",
-                                                    style: TextStyle(
-                                                        color: Colors.blue),
-                                                  ),
-                                                  Text(
-                                                    "${stocks[index].close}",
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "High: ",
-                                                    style: TextStyle(
-                                                        color: Colors.green),
-                                                  ),
-                                                  Text(
-                                                    "${stocks[index].high}",
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ],
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 32),
+                            child: ListView.builder(
+                                itemCount: stocks.length,
+                                itemBuilder: (context, index) {
+                                  return Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ListTile(
+                                        title: Text(
+                                            "${stocks[index].date.toString()}"),
+                                        subtitle: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "Open: ",
+                                                      style: TextStyle(
+                                                          color: Colors.blue),
+                                                    ),
+                                                    Text(
+                                                      "${stocks[index].open}",
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "Low: ",
+                                                      style: TextStyle(
+                                                          color: Colors.red),
+                                                    ),
+                                                    Text(
+                                                      "${stocks[index].low}",
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "Close: ",
+                                                      style: TextStyle(
+                                                          color: Colors.blue),
+                                                    ),
+                                                    Text(
+                                                      "${stocks[index].close}",
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "High: ",
+                                                      style: TextStyle(
+                                                          color: Colors.green),
+                                                    ),
+                                                    Text(
+                                                      "${stocks[index].high}",
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              }),
+                                  );
+                                }),
+                          ),
                         ),
                       ],
                     ),
@@ -152,7 +160,11 @@ class _StockDetailPageState extends State<StockDetailPage> {
                   child: Text("Fetch error."),
                 );
               }
-              return Center(child: Text("No Data"));
+              return Center(
+                  child: Text(
+                "No Data",
+                style: Theme.of(context).textTheme.bodyText2,
+              ));
             },
           )
         ],

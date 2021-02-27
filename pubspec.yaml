@@ -14,8 +14,9 @@ dependencies:
   fl_chart: ^0.12.0
   intl: ^0.16.0
   provider: ^4.3.3
+  flutter_candlesticks_chart: ^0.1.1
 
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.0
 
 dev_dependencies:
   flutter_test:
