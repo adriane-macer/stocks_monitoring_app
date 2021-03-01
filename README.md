@@ -1,7 +1,8 @@
 # stock_monitoring_app
 
 This project fetch and display stocks from Philippine Stock Exchange, Inc. 
-Using ttps://pselookup.vrymel.com/api.
+Using https://pselookup.vrymel.com/api as a base.
+The document of api can view here https://www.notion.so/PSE-Lookup-API-a68e29bbb9814635a92cef8519d1e0df#14673ef3bc4746aa98bdfe2061f02a43.
 
 **Sample api request** https://pselookup.vrymel.com/api/stocks/BDO 
 
